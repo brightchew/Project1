@@ -1,14 +1,14 @@
 window.addEventListener("load", renderQuestion, false);
 
 
-var pos = 0,
+var pos = 0,//pos is the question position in Array file
     test, test_status, question, choice, choices, chA, chB, chC, correct = 0;
 
 var questions = [
-    ["what is 10 + 4 ?", "12", "14", "16", "B"],
-    ["What is 20 - 9 ?", "7", "13", "11", "C"],
-    ["What is 7 x 3 ?", "21", "24", "25", "A"],
-    ["What is 8 / 2 ?", "10", "2", "4", "C"]
+    ["what is 10 + 4 ?", "12", "14", "16", "B", "img/1.png"],
+    ["What is 20 - 9 ?", "7", "13", "11", "C","img/2.png"],
+    ["What is 7 x 3 ?", "21", "24", "25", "A", "img/3.png"],
+    ["What is 8 / 2 ?", "10", "2", "4", "C", "img/4.png"]
 ];
 
 function _(x) {
@@ -39,7 +39,14 @@ function renderQuestion() {
 
     console.log("inside chA") //check
 
+    //write the questions in form
+
+     var imgFile = questions[pos][5];
+
+     console.log("imgFile= " + imgFile)
+
     test.innerHTML = "<h3>" + question + "</h3>";
+    test.innerHTML += "<img src='"+imgFile +"'" + "></img>";
     test.innerHTML += "<input type='radio' name='choices' value='A'>" + chA + "<br>";
     test.innerHTML += "<input type='radio' name='choices' value='B'>" + chB + "<br>";
     test.innerHTML += "<input type='radio' name='choices' value='C'>" + chC + "<br>";
