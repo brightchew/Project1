@@ -22,20 +22,19 @@ function renderQuestion() {
     if (pos >= questions.length) {
 
         test.innerHTML = "<h2> You got " + correct + " of " + questions.length + " questions correct </h2>";
-
+        element("test_score").textContent = "SCORE: " + correct + "/" +questions.length;
+        
         element("test_status").innerHTML = "test completed";
 
         pos = 0;
         correct = 0;
         return false;
 
-    } 
+    } else {
 
-    // else {
+     element("test_score").textContent = "SCORE: " + correct + "/" +questions.length;
 
-    //     element(x)("test_score").textContent = correct + "/" +questions.length;
-
-
+    }
 
     
     element("test_status").textContent = "Question of " + (pos+1) + " of " + questions.length;
