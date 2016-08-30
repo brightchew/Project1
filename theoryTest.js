@@ -1,5 +1,9 @@
-window.addEventListener("load", renderQuestion, false);
-
+window.addEventListener("load", function() {
+    renderQuestion();
+    startTimer();
+    
+    // add other functions here if they need to wait for the DOM to load before executing
+})
 
 var pos = 0,//pos is the question position in Array file
     test, test_status, question, choice, choices, chA, chB, chC, correct = 0;
@@ -16,7 +20,7 @@ function element(x) {
 }
 
 function renderQuestion() {
-    test = element("test");
+    test = element("test"); //get element of form div;
 
     // the following code is to check if question reach the end;
     if (pos >= questions.length) {
@@ -48,6 +52,8 @@ function renderQuestion() {
 
     //write the questions in form
 
+
+
      var imgFile = questions[pos][5];
 
      console.log("imgFile= " + imgFile)
@@ -65,12 +71,11 @@ function checkAnswer() {
 
 
     choices = document.getElementsByName('choices');
+    // choices is an array 
 
     for (var i = 0; i < choices.length; i++ ) {
         if (choices[i].checked) {
             choice = choices[i].value;
-
-            console.log("value is " +choice);
         }
     }
 
@@ -80,6 +85,28 @@ function checkAnswer() {
         pos++;
         renderQuestion();
 
+}
+
+//Timer Function
+
+timeInSeconds = 1800;
+
+function countdown() {
+  timeInSeconds--
+  minutes = Math.floor(timeInSeconds/60);
+  
+  seconds = (timeInSeconds % 60)
+  console.log("minutes: " + minutes + " seconds: " + seconds)
+  document.getElementById("timer").textContent = "Time Remaining " + minutes + ":" + seconds;
+}
+
+console.log()
+
+
+function startTimer () {    
+    document.getElementById("startTimer").addEventListener('click', function() {
+      timerID = setInterval(countdown, 1000)
+    })
 }
 
 
