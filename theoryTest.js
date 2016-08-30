@@ -11,33 +11,41 @@ var questions = [
     ["What is 8 / 2 ?", "10", "2", "4", "C", "img/4.png"]
 ];
 
-function _(x) {
+function element(x) {
     return document.getElementById(x);
 }
 
 function renderQuestion() {
-    test = _("test");
+    test = element("test");
 
+    // the following code is to check if question reach the end;
     if (pos >= questions.length) {
 
         test.innerHTML = "<h2> You got " + correct + " of " + questions.length + " questions correct </h2>";
 
-        _(x)("test_status").innerHTML = "test completed";
+        element("test_status").innerHTML = "test completed";
 
         pos = 0;
         correct = 0;
         return false;
-    }
 
-    // console.log("inside function")
-    _("test_status").textContent = "Question of " + (pos+1) + " of " + questions.length;
+    } 
+
+    // else {
+
+    //     element(x)("test_score").textContent = correct + "/" +questions.length;
+
+
+
+    
+    element("test_status").textContent = "Question of " + (pos+1) + " of " + questions.length;
 
     question = questions[pos][0];
     chA = questions[pos][1];
     chB = questions[pos][2];
     chC = questions[pos][3];
 
-    console.log("inside chA") //check
+    
 
     //write the questions in form
 
@@ -46,21 +54,18 @@ function renderQuestion() {
      console.log("imgFile= " + imgFile)
 
     test.innerHTML = "<h3>" + question + "</h3>";
-    test.innerHTML += "<img src='"+imgFile +"'" + "></img>";
+    test.innerHTML += "<img src='"+imgFile +"'" + "></img> <br>";
     test.innerHTML += "<input type='radio' name='choices' value='A'>" + chA + "<br>";
     test.innerHTML += "<input type='radio' name='choices' value='B'>" + chB + "<br>";
     test.innerHTML += "<input type='radio' name='choices' value='C'>" + chC + "<br>";
     test.innerHTML += "<button onclick='checkAnswer()'>Submit Answer </button>";
 }
-    console.log("end html");
+    
 
 function checkAnswer() {
 
-    console.log("checkAnswer caled"); //check
 
     choices = document.getElementsByName('choices');
-    
-    console.log("choices is " + choices.length); //check array result
 
     for (var i = 0; i < choices.length; i++ ) {
         if (choices[i].checked) {
@@ -72,11 +77,8 @@ function checkAnswer() {
 
         if (choice == questions[pos][4]) {
             correct++;
-
-            console.log("correct value is "+ correct);
         }
         pos++;
-        console.log("pos value is " + pos);
         renderQuestion();
 
 }
