@@ -1,7 +1,7 @@
 window.addEventListener("load", function() {
     renderQuestion();
     startTimer();
-    
+
     // add other functions here if they need to wait for the DOM to load before executing
 })
 
@@ -89,16 +89,21 @@ function checkAnswer() {
 
 //Timer Function
 
-timeInSeconds = 1800;
+timeInSeconds = 60;
 
 function countdown() {
+
+if (timeInSeconds>0) {
   timeInSeconds--
   minutes = Math.floor(timeInSeconds/60);
   
   seconds = (timeInSeconds % 60)
   console.log("minutes: " + minutes + " seconds: " + seconds)
   document.getElementById("timer").textContent = "Time Remaining " + minutes + ":" + seconds;
-}
+} else { 
+    return false;
+
+}}
 
 console.log()
 
