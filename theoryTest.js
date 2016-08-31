@@ -23,7 +23,12 @@ function renderQuestion() {
     test = element("test"); //get element of form div;
 
     // the following code is to check if question reach the end;
-    if (pos >= questions.length) {
+
+    
+
+    if (pos >= questions.length || timeInSeconds === 0) {
+
+        console.log("timeInSecond" + timeInSeconds);
 
         test.innerHTML = "<h2> You got " + correct + " of " + questions.length + " questions correct </h2>";
         element("test_score").textContent = "SCORE: " + correct + "/" +questions.length;
