@@ -5,10 +5,11 @@ $( "document" ).ready(function() {
     });
  
  $("#start").on("click", function() {
+ 	timerID = setInterval(countdown, 1000);
 			renderQuestion();
     			// startTimer();
     			$( "#start" ).prop( "disabled", true );
-    			timerID = setInterval(countdown, 1000);
+    			
 
  
 
@@ -129,20 +130,20 @@ if (timeInSeconds>0) {
 
 }}
 
-console.log( "position after countdown()");
+//Restart
 
+$("#restart").on("click", function() {
+console.log("inside restart function");
+	pos = 0;
+    correct = 0;
+    progressBar = 0 + "%";
+    $("#progressBar").css("width", progressBar);
+    test.innerHTML = "";
+    $("#test").html("<img src='img/cover.png' />");
+    $( "#start" ).prop( "disabled", false );
+    $("#test_status").html("<h2 id='test_status,></h2>");
+    $("#test_score").html("<h2 id='test_score'></h2>");
+    $("#timer").html("<h2 id='timer'></h2> ");
+    clearTimeout(timerID);
 
-// function startTimer () {    
-//     document.getElementById("startTimer").addEventListener('click', function() {
-//       timerID = setInterval(countdown, 1000)
-//     })
-// }
-
-// //Restart
-// $("#restart").on("click", function() {
-// 	pos = 0;
-//     correct = 0;
-//     progressBar = 0%;
-//     $("test img").css("src", "img/cover.png");
-//     $( "#start" ).prop( "disabled", false );
-// }
+});
