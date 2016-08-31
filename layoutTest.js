@@ -1,28 +1,23 @@
-console.log('javascript linked');
 
-$( "document" ).ready(function() {
-        console.log( "document loaded" );
-    });
- 
- $("#start").on("click", function() {
- 	timerID = setInterval(countdown, 1000);
-			renderQuestion();
-    			// startTimer();
-    			$( "#start" ).prop( "disabled", true );
-    			
 
- 
+$("document").ready(function() {
+    console.log("document loaded");
+});
 
-    			console.log("started Jquery");
+$("#start").on("click", function() {
+    timerID = setInterval(countdown, 1000);
+    renderQuestion();
+    // startTimer();
+    $("#start").prop("disabled", true);   
+})
 
- })
-
- var pos = 0,//pos is the question position in Array file
+//Abtract questions from test bank;
+var pos = 0, //pos is the question position in Array file
     test, test_status, question, choice, choices, chA, chB, chC, correct = 0;
 
 var questions = [
     ["what is 10 + 4 ?", "12", "14", "16", "B", "img/1.png"],
-    ["What is 20 - 9 ?", "7", "13", "11", "C","img/2.png"],
+    ["What is 20 - 9 ?", "7", "13", "11", "C", "img/2.png"],
     ["What is 7 x 3 ?", "21", "24", "25", "A", "img/3.png"],
     ["What is 8 / 2 ?", "10", "2", "4", "C", "img/4.png"]
 ];
@@ -35,115 +30,88 @@ function renderQuestion() {
     test = element("test"); //get element of form div;
 
     // the following code is to check if question reach the end;
-
-    
-
     if (pos >= questions.length || timeInSeconds === 0) {
 
-    	// Check if game is over;
+        // Check if game is over; if it is over, give result, reset value;
 
         test.innerHTML = "<h2> You got " + correct + " of " + questions.length + " questions correct </h2>";
-        element("test_score").textContent = "SCORE: " + correct + "/" +questions.length;
-        
-        element("test_status").innerHTML = "test completed";
+        element("test_score").textContent = "SCORE: " + correct + "/" + questions.length;
 
-        // if game is over, reset game;
+        element("test_status").innerHTML = "test completed";
         pos = 0;
         correct = 0;
         progressBar = 0;
         return false;
-        
 
     } else {
 
-     element("test_score").textContent = "SCORE: " + correct + "/" +questions.length;
-
+        element("test_score").textContent = "SCORE: " + correct + "/" + questions.length;
     }
 
-    element("test_status").textContent = "Question of " + (pos+1) + " of " + questions.length;
+    element("test_status").textContent = "Question of " + (pos + 1) + " of " + questions.length;
 
-    progressBar = Math.floor(((pos+1)/questions.length)*100) + "%";
-
-    console.log("progressbar is " + progressBar);
+    progressBar = Math.floor(((pos + 1) / questions.length) * 100) + "%";
 
     $("#progressBar").css("width", progressBar);
 
+    //read next question from test bank;
     question = questions[pos][0];
     chA = questions[pos][1];
     chB = questions[pos][2];
     chC = questions[pos][3];
 
-    
-
     //write the questions in form
-
-
-
-     var imgFile = questions[pos][5];
-
-     console.log("imgFile= " + imgFile)
-
+    var imgFile = questions[pos][5];
     test.innerHTML = "<h3>" + question + "</h3>";
-    test.innerHTML += "<img src='"+imgFile +"'" + "></img> <br>";
+    test.innerHTML += "<img src='" + imgFile + "'" + "></img> <br>";
     test.innerHTML += "<input type='radio' name='choices' value='A'>" + chA + "<br>";
     test.innerHTML += "<input type='radio' name='choices' value='B'>" + chB + "<br>";
     test.innerHTML += "<input type='radio' name='choices' value='C'>" + chC + "<br>";
     test.innerHTML += "<button onclick='checkAnswer()'>Submit Answer </button>";
 }
-    
 
 function checkAnswer() {
-
-
     choices = document.getElementsByName('choices');
     // choices is an array 
-
-    for (var i = 0; i < choices.length; i++ ) {
+    for (var i = 0; i < choices.length; i++) {
         if (choices[i].checked) {
             choice = choices[i].value;
         }
     }
-
-        if (choice == questions[pos][4]) {
-            correct++;
-        }
-        pos++;
-        renderQuestion();
-
+    if (choice == questions[pos][4]) {
+        correct++;
+    }
+    pos++;
+    renderQuestion();
 }
 
 //Timer Function
-
-timeInSeconds = 60;
-
+timeInSeconds = 60;  //set inital time value;
 function countdown() {
-
-if (timeInSeconds>0) {
-  timeInSeconds--
-  minutes = Math.floor(timeInSeconds/60);
-  
-  seconds = (timeInSeconds % 60)
-  console.log("minutes: " + minutes + " seconds: " + seconds)
-  document.getElementById("timer").textContent = "Time Remaining " + minutes + ":" + seconds;
-} else { 
-    return false;
-
-}}
-
-//Restart
-
+    if (timeInSeconds > 0) {
+        timeInSeconds--
+        minutes = Math.floor(timeInSeconds / 60);
+        seconds = (timeInSeconds % 60)
+        console.log("minutes: " + minutes + " seconds: " + seconds)
+        document.getElementById("timer").textContent = "Time Remaining " + minutes + ":" + seconds;
+    } else {
+        return false;
+    }
+}
+//Restart, set everything to inital status;
 $("#restart").on("click", function() {
-console.log("inside restart function");
-	pos = 0;
+    console.log("inside restart function");
+    pos = 0;
     correct = 0;
     progressBar = 0 + "%";
-    $("#progressBar").css("width", progressBar);
-    test.innerHTML = "";
-    $("#test").html("<img src='img/cover.png' />");
-    $( "#start" ).prop( "disabled", false );
-    $("#test_status").html("<h2 id='test_status,></h2>");
-    $("#test_score").html("<h2 id='test_score'></h2>");
-    $("#timer").html("<h2 id='timer'></h2> ");
-    clearTimeout(timerID);
+    $("#progressBar").css("width", progressBar); // Reset progress bar to zero;
+    test.innerHTML = ""; //set test question HTML to empty; 
+    $("#test").html("<img src='img/cover.png' />"); //set image to default; 
+    $("#start").prop("disabled", false); //re-active the start button
+    $("#test_status").html("<h2 id='test_status,></h2>"); //set test status to empty;
+    $("#test_score").html("<h2 id='test_score'></h2>"); //set test score to empty;
+    $("#timer").html("<h2 id='timer'></h2> "); //set time to empty;
+    clearTimeout(timerID); ////Stop timer;
+    timeInSeconds = 60; 
 
 });
