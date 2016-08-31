@@ -6,8 +6,10 @@ $( "document" ).ready(function() {
  
  $("#start").on("click", function() {
 			renderQuestion();
-    			startTimer();
+    			// startTimer();
     			$( "#start" ).prop( "disabled", true );
+    			timerID = setInterval(countdown, 1000);
+
  
 
     			console.log("started Jquery");
@@ -130,17 +132,17 @@ if (timeInSeconds>0) {
 console.log( "position after countdown()");
 
 
-function startTimer () {    
-    document.getElementById("startTimer").addEventListener('click', function() {
-      timerID = setInterval(countdown, 1000)
-    })
-}
+// function startTimer () {    
+//     document.getElementById("startTimer").addEventListener('click', function() {
+//       timerID = setInterval(countdown, 1000)
+//     })
+// }
 
 // //Restart
 // $("#restart").on("click", function() {
 // 	pos = 0;
 //     correct = 0;
-//     progressBar = 0;
+//     progressBar = 0%;
 //     $("test img").css("src", "img/cover.png");
 //     $( "#start" ).prop( "disabled", false );
 // }
