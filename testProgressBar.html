@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <!DOCTYPE html>
+    <html lang="en">
+
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+        <meta name="description" content="">
+        <meta name="author" content="">
+        <title>Driving Theory Test</title>
+        <!-- Bootstrap core CSS -->
+        <link href="css/bootstrap.min.css" rel="stylesheet">
+        <!-- Bootstrap theme -->
+        <link href="css/bootstrap-theme.min.css" rel="stylesheet">
+        <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
+        <link href="css/ie10-viewport-bug-workaround.css" rel="stylesheet">
+        <!-- Custom styles for this template -->
+        <link href="css/theme.css" rel="stylesheet">
+        <!-- Just for debugging purposes. Don't actually copy these 2 lines! -->
+        <!--[if lt IE 9]><script src="../../zs/js/ie8-responsive-file-warning.js"></script><![endif]-->
+        <script src="js/ie-emulation-modes-warning.js"></script>
+        <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+        <!--[if lt IE 9]>
+      <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
+      <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+    <![endif]-->
+        <style type="text/css">
+        #mainBody {
+            margin-left: auto;
+            margin-right: auto;
+        }
+        
+        h2 {
+            color: red;
+        }
+        
+        img {
+            position: relative;
+            margin-right: auto;
+            margin-left: auto;
+        }
+        /*.test {
+        	padding-left: 20px;
+        }*/
+        
+        .timer {
+            margin-bottom: 20px;
+        }
+        
+        .questionBody {
+            padding-left: 20px;
+        }
+        #questionTopic {
+        	margin-left: 20px;
+        }
+        </style>
+    </head>
+    <title></title>
+</head>
+
+<body>
+    <div class="container">
+        <div class="row">
+            <div class="center-block col-xs-12 col-sm-6 col-md-8" id="mainBody" style="float: none;">
+                <div>
+                    <h2 class="text-center"> Driving Theory Test</h2>
+                </div>
+                <div class="progress">
+                    <div class="progress-bar-info progress-bar-striped active" id="progressBar" role="progressbar" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100" style="min-width: 2em;">
+                        0%
+                    </div>
+                </div>
+                <!-- these below two divs are both float divs, after these if you want something on a new line, must clear -->
+                <h2 class="pull-left" id="test_score">Your Score is 2/4 question </h2>
+                <h2 class="pull-right" id="timer">Time Remaining 0:56</h2>
+                <div class="clearfix"></div>
+
+                <!-- wrap test question inside the boarder -->
+                <div class="panel panel-primary">
+                    <h2 id="questionTopic"> Question Topics</h2>
+                     <div class="test" id="test">
+                    <div class="questionBody text-center">
+                                
+                        <img src="img/cover.png" alt="..." class="img-thumbnail">
+                    </div>
+                  <!--   <div class="questionBody">
+                        <div class="radio">
+                            <label>
+                                <input type="radio" name="optionsRadios" id="optionsRadios1" value="option1" checked> Option one is this and that&mdash;be sure to include why it's great
+                            </label>
+                        </div>
+                        <div class="radio">
+                            <label>
+                                <input type="radio" name="optionsRadios" id="optionsRadios2" value="option2"> Option two can be something else and selecting it will deselect option one
+                            </label>
+                        </div>
+                        <div class="radio disabled">
+                            <label>
+                                <input type="radio" name="optionsRadios" id="optionsRadios3" value="option3" disabled> Option three is disabled
+                            </label>
+                        </div>
+                    </div> -->
+                    </div>
+                    
+                </div>
+                <button type="button" class="btn btn-primary clearfix" id="start">Start</button>
+                    <button type="button" class="btn btn-success clearfix" id="restart">Restart</button>
+            </div>
+        </div>
+
+
+
+         <!-- Bootstrap core JavaScript
+    ================================================== -->
+        <!-- Placed at the end of the document so the pages load faster -->
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+        </script>
+        <script src="js/jquery.min.js"></script>
+        <script src="js/bootstrap.min.js"></script>
+        <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
+        <script src="js/ie10-viewport-bug-workaround.js"></script>
+        <script src="layoutTest.js"></script>
+</body>
+
+</html>

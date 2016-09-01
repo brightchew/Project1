@@ -4,12 +4,28 @@ $("document").ready(function() {
     console.log("document loaded");
 });
 
+//particulars input form;
+
+// $("#start").on("click", function() {
+//     $("#test").empty();
+//     $(".particulars").append("<h2> Key Your Your Particulars </h2>");
+//     $(".particulars").append("<div id='particularsForm'></div>");
+//     $("#particularsForm").append("Your Full Name : ");
+//     $("#particularsForm").append("<input type='text' name='fullname' ></input> <br/>");
+//     $("#particularsForm").append("Your Email : ");
+//     $("#particularsForm").append("<input type='email' name='email' ></input> <br/>");
+//     $("#particularsForm").append("Your Mobile No. : ");
+//     $("#particularsForm").append("<input type='tel ' name='mobile' ></input> <br/>");
+//     $("#particularsForm").append("<input type='submit' name='submit' ></input>");
+// })
+
+
 $("#start").on("click", function() {
-    timerID = setInterval(countdown, 1000);
-    renderQuestion();
-    // startTimer();
-    $("#start").prop("disabled", true);   
-})
+        timerID = setInterval(countdown, 1000);
+        renderQuestion();
+        // startTimer();
+        $("#start").prop("disabled", true);   
+    })
 
 //Abtract questions from test bank;
 var pos = 0, //pos is the question position in Array file
@@ -41,6 +57,7 @@ function renderQuestion() {
         pos = 0;
         correct = 0;
         progressBar = 0;
+        $("#progressBar").html("0%");
         return false;
 
     } else {
@@ -53,6 +70,7 @@ function renderQuestion() {
     progressBar = Math.floor(((pos + 1) / questions.length) * 100) + "%";
 
     $("#progressBar").css("width", progressBar);
+    $("#progressBar").html(progressBar);
 
     //read next question from test bank;
     question = questions[pos][0];
@@ -104,6 +122,7 @@ $("#restart").on("click", function() {
     pos = 0;
     correct = 0;
     progressBar = 0 + "%";
+    $("#progressBar").html("0%");
     $("#progressBar").css("width", progressBar); // Reset progress bar to zero;
     test.innerHTML = ""; //set test question HTML to empty; 
     $("#test").html("<img src='img/cover.png' />"); //set image to default; 

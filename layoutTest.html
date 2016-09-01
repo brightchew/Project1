@@ -54,21 +54,28 @@
     <div class="container theme-showcase" role="main" >
     <div class="row">
         <div class="progress">
-            <div class="progress-bar progress-bar-info" id="progressBar" role="progressbar" aria-valuenow="20" aria-valuemin="0" aria-valuemax="100" style="width: 0%" ><span class="sr-only">0% Complete</span></div>
+            <div class="progress-bar progress-bar-info progress-bar-striped active" id="progressBar" role="progressbar" aria-valuenow="20" aria-valuemin="0" aria-valuemax="100" style="min-width: 2em;" > 0% </div>
         </div>
     </div>
 
+    <!-- add user particulars -->
+    <div class="particulars">
+    
+  
+    </div>
+
+
     <div class="row">
-        <!-- question content -->
         <h2 id="test_status"></h2>  <!-- Show how many questions answered; -->
         <h2 id="test_score"></h2>   <!-- Number of correct answers in total -->
         <h2 id="timer"></h2>        <!-- Display the remaining time -->
     </div>
 
     <div class="row">
+            <div id="test">
             <h2>Driving Theory Test</h2>
             <p> </p>
-            <div id="test">
+            
               <img src="img/cover.png"> </img>
             </div>
     </div>
@@ -90,12 +97,9 @@
     ================================================== -->
         <!-- Placed at the end of the document so the pages load faster -->
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
-        <script>
-        window.jQuery || document.write('<script src="js/vendor/jquery.min.js"><\/script>')
         </script>
         <script src="js/jquery.min.js"></script>
         <script src="js/bootstrap.min.js"></script>
-        <script src="js/docs.min.js"></script>
         <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
         <script src="js/ie10-viewport-bug-workaround.js"></script>
         <script src="layoutTest.js"></script>
