@@ -1,11 +1,27 @@
 #test {
-	border: 1px solid blue;
-	padding: 40px;
+	border: 2px solid blue;
+	padding: 20px;
+	border-radius: 25px;
 }
 
 #timer {
 	font-family: 'Kumar One Outline', cursive;
-	font-size: 1em;
+	font-size: 2em;
 	color: red;
+	display: inline-block;
+	float:right;
 }
 
+#test_score {
+	display: inline-block;
+	/*float: left;
+	margin-left: 100px;*/
+}
+#test_status {
+	display: inline-block;
+	float:left;
+
+}
+#test_info {
+	text-align: center;
+}

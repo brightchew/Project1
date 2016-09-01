@@ -62,10 +62,10 @@ function renderQuestion() {
 
     } else {
 
-        element("test_score").textContent = "SCORE: " + correct + "/" + questions.length;
+        element("test_score").textContent = "Score: " + correct + "/" + questions.length;
     }
 
-    element("test_status").textContent = "Question of " + (pos + 1) + " of " + questions.length;
+    element("test_status").textContent = "Question " + (pos + 1) + " of " + questions.length;
 
     progressBar = Math.floor(((pos + 1) / questions.length) * 100) + "%";
 
@@ -84,8 +84,8 @@ function renderQuestion() {
     test.innerHTML += "<img src='" + imgFile + "'" + "></img> <br>";
     test.innerHTML += "<input type='radio' name='choices' value='A'>" + chA + "<br>";
     test.innerHTML += "<input type='radio' name='choices' value='B'>" + chB + "<br>";
-    test.innerHTML += "<input type='radio' name='choices' value='C'>" + chC + "<br>";
-    test.innerHTML += "<button onclick='checkAnswer()'>Submit Answer </button>";
+    test.innerHTML += "<input type='radio' name='choices' value='C'>" + chC + "<br> <br>";
+    test.innerHTML += "<button class='btn btn-lg btn-info' onclick='checkAnswer()'>Submit Answer </button>";
 }
 
 function checkAnswer() {
@@ -96,7 +96,7 @@ function checkAnswer() {
             choice = choices[i].value;
         }
     }
-    if (choice == questions[pos][4]) {
+    if (choice === questions[pos][4]) {
         correct++;
     }
     pos++;
@@ -110,7 +110,6 @@ function countdown() {
         timeInSeconds--
         minutes = Math.floor(timeInSeconds / 60);
         seconds = (timeInSeconds % 60)
-        console.log("minutes: " + minutes + " seconds: " + seconds)
         document.getElementById("timer").textContent = "Time Remaining " + minutes + ":" + seconds;
     } else {
         return false;
