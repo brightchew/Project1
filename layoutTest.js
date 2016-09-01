@@ -82,9 +82,9 @@ function renderQuestion() {
     var imgFile = questions[pos][5];
     test.innerHTML = "<h3>" + question + "</h3>";
     test.innerHTML += "<img src='" + imgFile + "'" + "></img> <br>";
-    test.innerHTML += "<input type='radio' name='choices' value='A'>" + chA + "<br>";
-    test.innerHTML += "<input type='radio' name='choices' value='B'>" + chB + "<br>";
-    test.innerHTML += "<input type='radio' name='choices' value='C'>" + chC + "<br> <br>";
+    test.innerHTML += "<div class='radio'> <label> <input type='radio' name='choices' value='A'>" + chA + "</label> </div>";
+    test.innerHTML += "<div class='radio'><label> <input type='radio' name='choices' value='B'>" + chB + "</label></div>";
+    test.innerHTML += "<label> <input type='radio' name='choices' value='C'>" + chC + "</label>  <br> <br>";
     test.innerHTML += "<button class='btn btn-lg btn-info' onclick='checkAnswer()'>Submit Answer </button>";
 }
 
