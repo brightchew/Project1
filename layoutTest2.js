@@ -1,29 +1,31 @@
+
+
 $("document").ready(function() {
     console.log("document loaded");
 });
 
-//particulars input form;
-
-// $("#start").on("click", function() {
-//     $("#test").empty();
-//     $(".particulars").append("<h2> Key Your Your Particulars </h2>");
-//     $(".particulars").append("<div id='particularsForm'></div>");
-//     $("#particularsForm").append("Your Full Name : ");
-//     $("#particularsForm").append("<input type='text' name='fullname' ></input> <br/>");
-//     $("#particularsForm").append("Your Email : ");
-//     $("#particularsForm").append("<input type='email' name='email' ></input> <br/>");
-//     $("#particularsForm").append("Your Mobile No. : ");
-//     $("#particularsForm").append("<input type='tel ' name='mobile' ></input> <br/>");
-//     $("#particularsForm").append("<input type='submit' name='submit' ></input>");
-// })
-
+// particulars input form;
 
 $("#start").on("click", function() {
-    timerID = setInterval(countdown, 1000);
-    renderQuestion();
-    // startTimer();
-    $("#start").prop("disabled", true);
+    $("#test").empty();
+    $(".particulars").append("<h2> Key Your Your Particulars </h2>");
+    $(".particulars").append("<div id='particularsForm'></div>");
+    $("#particularsForm").append("Your Full Name : ");
+    $("#particularsForm").append("<input type='text' name='fullname' ></input> <br/>");
+    $("#particularsForm").append("Your Email : ");
+    $("#particularsForm").append("<input type='email' name='email' ></input> <br/>");
+    $("#particularsForm").append("Your Mobile No. : ");
+    $("#particularsForm").append("<input type='tel ' name='mobile' ></input> <br/>");
+    $("#particularsForm").append("<input type='submit' name='submit' ></input>");
 })
+
+
+$(".particulars submit").on("click", function() {
+        timerID = setInterval(countdown, 1000);
+        renderQuestion();
+        // startTimer();
+        $("#start").prop("disabled", true);   
+    })
 
 //Abtract questions from test bank;
 var pos = 0, //pos is the question position in Array file
@@ -134,7 +136,7 @@ function renderQuestion() {
     chB = questions[pos][2];
     chC = questions[pos][3];
 
-    //read the questions from Array to form a question;
+    //write the questions in form
     var imgFile = questions[pos][5];
     test.innerHTML = "<h3>" + question + "</h3>";
     test.innerHTML += "<img src='" + imgFile + "'" + "></img> <br>";
@@ -160,7 +162,7 @@ function checkAnswer() {
 }
 
 //Timer Function
-timeInSeconds = 60; //set inital time value;
+timeInSeconds = 60;  //set inital time value;
 function countdown() {
     if (timeInSeconds > 0) {
         timeInSeconds--
@@ -186,6 +188,6 @@ $("#restart").on("click", function() {
     $("#test_score").html("<h2 id='test_score'></h2>"); //set test score to empty;
     $("#timer").html("<h2 id='timer'></h2> "); //set time to empty;
     clearTimeout(timerID); ////Stop timer;
-    timeInSeconds = 60;
+    timeInSeconds = 60; 
 
 });
